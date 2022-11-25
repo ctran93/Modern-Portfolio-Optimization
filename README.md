@@ -9,7 +9,7 @@ Based on the Modern Portfolio Theory, this optimization programming with R shall
 4. Sea Limited (NYSE: SE),
 5. Tesla, Inc. (NASDAQ: TSLA).
 
-Raw market data is collected from the start of 2017 to the current date. 
+Raw market data is collected from the start of 2017 to the current date (as of 11/24/2022). 
 
 <h2>Getting Started </h2>
 <h3>Loading libraries </h3>
@@ -115,7 +115,7 @@ governed by the following constraints:
 
 in which:
 
-* $\sigma_{p}^2$ = the covariance of the portfolio,
+* $\sigma_{p}^2$ = the variance of the portfolio,
 
 * $\mu_{p}$ = the expected return of the portfolio,
 
@@ -173,8 +173,32 @@ stock "AAPL"   "META" "OXY"   "SE"     "TSLA"
 [1] 0.2599801
 ```
 
-This output means, given the desirable overall expected return at 0.5 (~ 50% after one year), the portfolio would face the lowest risk at the portfolio variance of 0.26 if the portfolio consists of
+This output means, given the desirable overall expected return at 0.5 (~ 50% after one year), the portfolio would face the lowest risk at the variance of 0.26 if the portfolio consists of 20.4 % of AAPL, 0 % of META, 50.2 % of OXY, 19.1 % of SE, and 10.2 % of TSLA
 
+<h2> Efficient Frontier Visualization </h2>
 
+The Efficient Frontier is all the scatter points, each representing a given portfolio's expected return and its corresponding minimum variance. Any portfolio located on the Efficient Frontier would have a higher expected return than any other portfolio having the same variance. Similarly, any portfolio located on the Efficient Frontier would have a lower risk (lower variance) than any other portfolio having the same expected return. Investors, thus, should only consider portfolios laying on the Efficient Frontier. 
 
+The Efficient Frontier is limited by the minimum and maximum expected returns. While the minimum expected return is determined by the lowest expected return of all securities, the maximum expected return is determined by the highest one. No portfolio has an expected return beyond this bound. 
 
+```
+port_return <- c()
+port_variance <-c()
+min_return_in_percent <- ceiling(min(stats$Yearly_Expected_Return)*100)
+max_return_in_percent <- floor(max(stats$Yearly_Expected_Return)*100)
+for (n in (min_return_in_percent:max_return_in_percent)){
+  expected_portfolio_return <- n/100
+  new_bvec <- c(1,expected_portfolio_return,0,0,0,0,0)
+  qp <- solve.QP(Dmat, dvec, Amat, new_bvec, meq = 1)
+  port_return <- c(port_return, expected_portfolio_return)
+  port_variance <- c(port_variance, qp$value)
+}
+efficient_frontier <- plot_ly(x = port_variance, 
+                              y = port_return,
+                              type = 'scatter',
+                              mode = 'lines+markers')%>%
+  layout(title = "Efficient Frontier", xaxis = list(title = "Portfolio Variance (Risk)"), yaxis = list(title = "Portfolio Return"))
+efficient_frontier
+```
+
+<h3> Efficient Frontier </h3>
