@@ -74,8 +74,8 @@ returns_data
 stats
 portfolio_weights <- rbind(stock, round(qp$solution, 4))
 portfolio_weights
-portfolio_covariance <- qp$value
-portfolio_covariance
+portfolio_variance <- qp$value
+portfolio_variance
 ```
 ```{r}
 ### For checking result only
