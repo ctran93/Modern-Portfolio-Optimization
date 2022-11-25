@@ -267,7 +267,8 @@ for (n in (min_return_in_percent:max_return_in_percent)){
 efficient_frontier <- plot_ly(x = port_variance, 
                               y = port_return,
                               type = 'scatter',
-                              mode = 'lines+markers')%>%
+                              mode = 'lines+markers',
+                              fill = 'tozeroy')%>%
   layout(title = "Efficient Frontier", xaxis = list(title = "Portfolio Variance (Risk)"), yaxis = list(title = "Portfolio Return"))
 efficient_frontier
 ```
