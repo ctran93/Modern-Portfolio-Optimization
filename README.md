@@ -278,3 +278,8 @@ efficient_frontier
 ![Efficient Frontier](https://user-images.githubusercontent.com/114312864/204059841-05c3f844-7766-4a2a-ab52-3b777961ce8b.png)
 
 The graph above illustrates the Efficient Frontier for the portfolio consisting of five securities, including AAPL, META, OXY, SE, and TSLA. There is no portfolio existing above the frontier, while all possible portfolios are laying on or under the line. As mentioned, the line represents the optimal portfolios, each providing the maximum expected annual return given a certain level of risk. The highest possible expected annual return is approximately 1.4, corresponding to 140% capital gain after one year. Yet, this portfolio also faces the highest level of risk, corresponding to a variance of nearly 8.5.  It would be better to accept the overall yearly return of 0.4, or 40%, to reduce the risk with the portfolio variance nearly approaching zero. 
+
+
+## Disadvantages
+
+Notwithstanding 
