@@ -31,7 +31,6 @@ returns_data <- data %>%
                  mutate_fun = periodReturn, 
                  period = "yearly", 
                  col_rename = "Yearly Return")
-data
 
 ### Stats Calculations
 # Expected Return and Standard Deviation
@@ -40,13 +39,11 @@ stats <- returns_data %>%
     Yearly_Expected_Return = mean(`Yearly Return`),
     Standard_Deviation = sd(`Yearly Return`)
   )
-stats
 #Covariance
 returns_matrix <- tidyr::spread(returns_data, 
                                 key = "symbol", 
                                 value = "Yearly Return")
 covariance_matrix <- cov(returns_matrix[,-1])
-covariance_matrix
 
 ### Optimization
 # Objective matrix
