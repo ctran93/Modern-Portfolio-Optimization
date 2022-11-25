@@ -84,12 +84,12 @@ portfolio_covariance
 calc_portfolio_variance <- function(weights) {
     t(weights) %*% (covariance_matrix %*% weights) %>% as.vector()
 }
-calc_portfolio_variance(qp$solution) #Should equals to portfolio_covariance
+calc_portfolio_variance(qp$solution) #Should be equal to portfolio_covariance
 calc_portfolio_return <- function(weights) {
     stats_mean <- stats$Yearly_Expected_Return
     sum(stats_mean * weights)
 }
-calc_portfolio_return(qp$solution) #Should equals to goal
+calc_portfolio_return(qp$solution) #Should be equal to goal
 ```
 
 ```{r}
