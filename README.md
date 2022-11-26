@@ -14,7 +14,7 @@ Based on the Modern Portfolio Theory, this optimization programming with R is go
 
 * Tesla, Inc. (NASDAQ: TSLA).
 
-Raw market data is collected from the start of 2017 to the current date. 
+Raw market data is collected from the first trading day of 2017 (Jan 03, 2017) to the current date. 
 
 ## Getting Started 
 ### Loading Libraries
@@ -35,9 +35,31 @@ library(plotly)
 
 ### Getting Data 
 
+Raw market data was collected from Yahoo Finance with the function: tq_get(get = "stock.prices"). Quantitative data collected with this function include volume, opening, highest, lowest, closing, and adjusted price for every individual security on every trading day.  
+
+Example: Collected data for NYSE: SNAP on Mar 09, 2021. 
+
+```r
+SNAP <- tq_get("SNAP", get = "stock.prices", complete_cases = TRUE, from = "2021-03-09", to = "2021-03-10")
+SNAP
+```
+
+***Output***
+
+| Symbol | Date | Open | High | Low | Close | Volume | Adjusted |
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+| SNAP | 2021-03-09 | 55.41 | 57.29	| 54.51 | 56.3 | 20761000 | 56.3 |
+
+The following code is used for collecting quantitative market data for the five securities used for this portfolio optimization. They are NASDAQ: AAPL, NASDAQ: META, NYSE: OXY, NYSE: SE, and NASDAQ: TSLA.
+
 ```r
 stock <- c("AAPL", "META", "OXY", "SE", "TSLA")
 data <- tq_get(stock, get = "stock.prices", complete_cases = TRUE, from = "2017-01-01", to = TODAY())
+```
+
+Yet, the previous code only gives the data for every individual stock on every trading day of a given time period. Further steps, then, need to be taken to process and transform market daily data into data that only include the annual return for every security.  
+
+```r
 returns_data <- data %>%
     select(symbol, date, adjusted) %>%
     group_by(symbol)%>%
@@ -45,45 +67,23 @@ returns_data <- data %>%
                  mutate_fun = periodReturn, 
                  period = "yearly", 
                  col_rename = "Annual Return")
-return_data
+returns_data %>%
+   pivot_wider(names_from = 'symbol',values_from = 'Annual Return')
 ```
 
 The output shows the Annual Return for each individual security from 2017 to the current year. 
 
 ***Output** (on 11/23/2022):* 
 
-| Symbol  | Date | Annual Return |
-| ------------- | ------------- | ------------- |
-| AAPL | 2017-12-29	 | 0.48042508 |
-| AAPL | 2018-12-31	 | -0.05390171 |
-| AAPL | 2019-12-31 | 0.88957821 |
-| AAPL | 2020-12-31 | 0.82306715 |
-| AAPL | 2021-12-31 | 0.34648191 |
-| AAPL | 2022-11-23 | -0.14429929 |
-| META | 2017-12-29 | 0.51001203 |
-| META | 2018-12-31 | -0.25711215 |
-| META | 2019-12-31 | 0.56571826 |
-| META | 2020-12-31 | 0.33086482 |
-| META | 2021-12-31 | 0.23132963 |
-| META | 2022-11-23 | -0.66630000 |
-| OXY | 2017-12-29 | 0.06924431 |
-| OXY | 2018-12-31 | -0.13048909 |
-| OXY | 2019-12-31 | -0.28283138 |
-| OXY | 2020-12-31 | -0.56632822 |
-| OXY | 2021-12-31 | 0.67710962 |
-| OXY | 2022-11-23 | 1.46872210 |
-| SE | 2017-12-29 | -0.18019680 |
-| SE | 2018-12-31 | -0.15078770 |
-| SE | 2019-12-31 | 2.55300362 |
-| SE | 2020-12-31 | 3.94903028 |
-| SE | 2021-12-31 | 0.12388849 |
-| SE | 2022-11-23 | -0.75132985 |
-| TSLA | 2017-12-29 | 0.43485870 |
-| TSLA | 2018-12-31 | 0.06889353 |
-| TSLA | 2019-12-31 | 0.25700121 |
-| TSLA | 2020-12-31 | 7.43437001 |
-| TSLA | 2021-12-31 | 0.49755559 |
-| TSLA | 2022-11-23 | -0.47992962 |
+| Date  | AAPL | META | OXY | SE | TSLA |
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+| 2017-12-29 | 0.48042498 | 0.5100120 | 0.06924442 | -0.1801968 | 0.43485870 |
+| 2018-12-31 | -0.05390189 | -0.2571121 | -0.13048936 | -0.1507877 | 0.06889353 |
+| 2019-12-31 | 0.88957856 | 0.5657183 | -0.28283133 | 2.5530036 | 0.25700121 |
+| 2020-12-31 | 0.82306715 | 0.3308648 | -0.56632817 | 3.9490303 | 7.43437001 |
+| 2021-12-31 | 0.34648191 | 0.2313296 | 0.67710942 | 0.1238885 | 0.49755559 |
+| 2022-11-23 | -0.14429929 | -0.6663000 | 1.46872210 | -0.7513298 | -0.47992962 |
+
 
 ## Securities Statistics 
 ### Individual Security
@@ -111,16 +111,26 @@ The output shows the Expected Annual Return and Standard Deviation for each indi
 |4| SE  | 0.9239347 | 1.8775403 |
 |5| TSLA  | 1.3687916 | 2.9921934 |
 
+The previous table illustrates the Expected Annual Return and Risk (given by the Deviation) of every individual stock. Since the standard deviation (and variance) is used for measuring how the actual return would deviate from the expected value, the highest standard deviation exhibits the greatest level of risk. That said, while TSLA would give a higher expected yearly return (nearly 140 %) than any of the other four securities, a portfolio only contains TSLA would face the highest risk with a standard deviation of 3. 
+
 ### Covariance 
 
+The covariance is a mathematical quantity that measures the realationship between two variables. 
+
 The mathematical covariance of any pair of securities is given by:
-$\sigma_{ij}$ = expected value of $[(X_{i} - \mu_{i})((X_{j} - \mu_{j})]$ where: 
+
+$\sigma_{ij}$ = $E{[(X_{i} - \mu_{i})(X_{j} - \mu_{j})]}$ where: 
+
+* E(x) = expected value of x 
 
 * $\sigma_{ij}$ = the covariance between securities i and j,
 
 * $\mu_{i}$ = expected return of security i,
 
 * $\mu_{i}$ = expected return of security j.
+
+
+A high positive covariance means the two stocks tend to move in similar directions. They will increase or decrease together. On the other hand, a large negative covariance means the two stocks tend to move in opposite directions. A covariance of approximately 0 means there is no clear relationship between the two stocks. It could be concluded that the two stocks are independent. 
 
 Calculating the Covariance for each pair of stocks:
 
