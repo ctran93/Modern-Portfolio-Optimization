@@ -2,7 +2,7 @@
 
 Modern Portfolio Theory is a mathematical method for selecting a variety of investments such as stocks, bonds, or treasury bills in order to optimize the overall returns in a period of time for a given level of risk. This method is also known as the mean-variance analysis since it takes into account the mean (expected return) and variance of each individual security to calculate the overall expected return and level of risk (variance) of the portfolio. The theory considers diversification as a key to portfolio management since it would help investors to reduce risks or/and increase overall return.
 
-Based on the Modern Portfolio Theory, this optimization programming with R is going to calculate the minimum risk of the portfolio containing a set of securities for a given desirable overall return. The program is built to optimize a portfolio comprising five (5) different securities, including: 
+Based on the Modern Portfolio Theory, this optimization programming with **R** is going to calculate the minimum risk of the portfolio containing a set of securities for a given desirable overall return. The program is built to optimize a portfolio comprising five (5) different securities, including: 
 
 * Apple Inc. (NASDAQ: AAPL),
 
