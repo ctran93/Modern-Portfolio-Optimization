@@ -50,7 +50,7 @@ SNAP
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 | SNAP | 2021-03-09 | 55.41 | 57.29	| 54.51 | 56.3 | 20761000 | 56.3 |
 
-The following code is used for collecting quantitative market data for the five securities used for this portfolio optimization. They are NASDAQ: AAPL, NASDAQ: META, NYSE: OXY, NYSE: SE, and NASDAQ: TSLA.
+The following code is used for collecting quantitative market data for the five securities used for this portfolio optimization.
 
 ```r
 stock <- c("AAPL", "META", "OXY", "SE", "TSLA")
@@ -111,7 +111,7 @@ The output shows the Expected Annual Return and Standard Deviation for each indi
 |4| SE  | 0.9239347 | 1.8775403 |
 |5| TSLA  | 1.3687916 | 2.9921934 |
 
-The previous table illustrates the Expected Annual Return and Risk (given by the Deviation) of every individual stock. Since the standard deviation (and variance) is used for measuring how the actual return would deviate from the expected value, the highest standard deviation exhibits the greatest level of risk. That said, while TSLA would give a higher expected yearly return (nearly 140 %) than any of the other four securities, a portfolio only contains TSLA would face the highest risk with a standard deviation of 3. 
+> The previous table illustrates the Expected Annual Return and Risk (given by the Deviation) of every individual stock. Since the standard deviation (and variance) is used for measuring how the actual return would deviate from the expected value, the highest standard deviation exhibits the greatest level of risk. That said, while TSLA would give a higher expected yearly return (nearly 140 %) than any of the other four securities, a portfolio only contains TSLA would face the highest risk with a standard deviation of 3. 
 
 ### Covariance 
 
@@ -130,7 +130,7 @@ $\sigma_{ij}$ = $E{[(X_{i} - \mu_{i})(X_{j} - \mu_{j})]}$ where:
 * $\mu_{i}$ = expected return of security j.
 
 
-A high positive covariance means the two stocks tend to move in similar directions. They will increase or decrease together. On the other hand, a large negative covariance means the two stocks tend to move in opposite directions. A covariance of approximately 0 means there is no clear relationship between the two stocks. It could be concluded that the two stocks are independent. 
+> A high positive covariance means the two stocks tend to move in similar directions. They will increase or decrease together. On the other hand, a large negative covariance means the two stocks tend to move in opposite directions. A covariance of approximately 0 means there is no clear relationship between the two stocks. It could be concluded that the two stocks are independent. 
 
 Calculating the Covariance for each pair of stocks:
 
@@ -229,7 +229,7 @@ stock "AAPL"   "META" "OXY"   "SE"     "TSLA"
 [1] 0.2599802
 ```
 
-This output means, given the desirable expected annual return at **0.5** (~ 50% after one year), the portfolio would face the lowest risk at the variance of **0.26** if the portfolio consists of **20.4 %** of AAPL, **0 %** of META, **50.2 %** of OXY, **19.1 %** of SE, and **10.2 %** of TSLA.
+> This output means, given the desirable expected annual return at **0.5** (~ 50% after one year), the portfolio would face the lowest risk at the variance of **0.26** if the portfolio consists of **20.4 %** of AAPL, **0 %** of META, **50.2 %** of OXY, **19.1 %** of SE, and **10.2 %** of TSLA.
 
 ### Double Checking Result
 
@@ -287,5 +287,5 @@ efficient_frontier
 
 ![Efficient Frontier](https://user-images.githubusercontent.com/114312864/204059841-05c3f844-7766-4a2a-ab52-3b777961ce8b.png)
 
-The graph above illustrates the Efficient Frontier for the portfolio consisting of five securities, including AAPL, META, OXY, SE, and TSLA. There is no portfolio existing above the frontier, while all possible portfolios are laying on or under the line. As mentioned, the line represents the optimal portfolios, each providing the maximum expected annual return given a certain level of risk. The highest possible expected annual return is approximately 1.4, corresponding to 140% capital gain after one year. Yet, this portfolio also faces the highest level of risk, corresponding to a variance of nearly 8.5.  It would be better to accept the overall yearly return of 0.4, or 40%, to reduce the risk with the portfolio variance nearly approaching zero. 
+> The graph above illustrates the Efficient Frontier for the portfolio consisting of five securities, including AAPL, META, OXY, SE, and TSLA. There is no portfolio existing above the frontier, while all possible portfolios are laying on or under the line. As mentioned, the line represents the optimal portfolios, each providing the maximum expected annual return given a certain level of risk. The highest possible expected annual return is approximately 1.4, corresponding to 140% capital gain after one year. Yet, this portfolio also faces the highest level of risk, corresponding to a variance of nearly 8.5.  It would be better to accept the overall yearly return of 0.4, or 40%, to reduce the risk with the portfolio variance nearly approaching zero. 
 
