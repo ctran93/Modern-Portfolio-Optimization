@@ -35,7 +35,7 @@ library(plotly)
 
 ### Getting Data 
 
-Raw market data was collected from Yahoo Finance with the function: tq_get(get = "stock.prices"). Quantitative data collected with this function include volume, opening, highest, lowest, closing, and adjusted price for every individual security on every trading day.  
+Raw market data was collected from Yahoo! Finance with the function: **tq_get(get = "stock.prices")**. Quantitative data collected with this function include volume, opening, highest, lowest, closing, and adjusted price for every individual security on every trading day.  
 
 Example: Collected data for NYSE: SNAP on Mar 09, 2021. 
 
