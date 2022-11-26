@@ -71,7 +71,7 @@ returns_data %>%
    pivot_wider(names_from = 'symbol',values_from = 'Annual Return')
 ```
 
-The output shows the Annual Return for each individual security from 2017 to the current year. 
+The output shows the **Annual Return** for each individual security from 2017 to the current year. 
 
 ***Output** (on 11/23/2022):* 
 
@@ -88,7 +88,7 @@ The output shows the Annual Return for each individual security from 2017 to the
 ## Securities Statistics 
 ### Individual Security
 
-Calculating Expected Return and Standard Deviation for every individual stock:
+Calculating **Expected Return** and **Standard Deviation** for every individual stock:
 
 ```r
 stats <- returns_data %>%
@@ -99,7 +99,7 @@ stats <- returns_data %>%
 stats
 ```
 
-The output shows the Expected Annual Return and Standard Deviation for each individual security.
+The output shows the **Expected Annual Return** and **Standard Deviation** for each individual security.
 
 ***Output** (on 11/23/2022):* 
 
@@ -115,7 +115,7 @@ The output shows the Expected Annual Return and Standard Deviation for each indi
 
 ### Covariance 
 
-The covariance is a mathematical quantity that measures the realationship between two variables. 
+The **covariance** is a mathematical quantity that measures the realationship between two variables. 
 
 The mathematical covariance of any pair of securities is given by:
 
@@ -132,7 +132,7 @@ $\sigma_{ij}$ = $E{[(X_{i} - \mu_{i})(X_{j} - \mu_{j})]}$ where:
 
 > A high positive covariance means the two stocks tend to move in similar directions. They will increase or decrease together. On the other hand, a large negative covariance means the two stocks tend to move in opposite directions. A covariance of approximately 0 means there is no clear relationship between the two stocks; and it could be concluded that the two stocks are independent. 
 
-Calculating the Covariance for each pair of stocks:
+Calculating the **Covariance** for each pair of stocks:
 
 ```r
 returns_matrix <- tidyr::spread(returns_data, 
@@ -155,7 +155,7 @@ TSLA  0.7179273  0.4532178 -1.2641772  4.5520224  8.9532214
 
 ## Optimization Solving 
 
-In the Modern Portfolio Optimization, the objective is the minimum of the portfolio variance, given by the function:
+In the **Modern Portfolio Optimization**, the objective is the **minimum** of the portfolio variance, given by the function:
 
 $\sigma_{p}^2 = \Sigma_{all_i}\Sigma_{all_j }x_{i}x_{j}\sigma_{ij}$
 
@@ -179,7 +179,7 @@ in which:
 
 * $\sigma_{ij}$ = the covariance between securities i and j. 
 
-In order to find the minimum risk (measured by the portfolio variance) given a desirable overall expected return, an advanced mathematical tool called quadratic programming is used.
+In order to find the minimum risk (measured by the portfolio variance) given a desirable overall expected return, an advanced mathematical tool called **quadratic programming** is used.
 
 The general quadratic programming problem:
 
@@ -258,7 +258,7 @@ The results match with the calculated variance of **0.26** and the given desirab
 
 ## Efficient Frontier Visualization 
 
-The Efficient Frontier is all the scatter points, each representing a given portfolio's expected return and its corresponding minimum variance. Any portfolio located on the Efficient Frontier would have a higher expected return than any other portfolio having the same variance. Similarly, any portfolio located on the Efficient Frontier would have a lower risk (lower variance) than any other portfolio having the same expected return. Investors, thus, should only consider portfolios laying on the Efficient Frontier. 
+**The Efficient Frontier** is all the scatter points, each representing a given portfolio's expected return and its corresponding minimum variance. Any portfolio located on the Efficient Frontier would have a higher expected return than any other portfolio having the same variance. Similarly, any portfolio located on the Efficient Frontier would have a lower risk (lower variance) than any other portfolio having the same expected return. Investors, thus, should only consider portfolios laying on the Efficient Frontier. 
 
 The Efficient Frontier is limited by the minimum and maximum expected returns. While the minimum expected return is determined by the lowest expected return of all securities, the maximum expected return is determined by the highest one. No portfolio has an expected return beyond this bound. 
 
