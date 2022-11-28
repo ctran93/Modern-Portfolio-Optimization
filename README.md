@@ -185,7 +185,8 @@ In order to find the minimum risk (measured by the portfolio variance) given a d
 
 The general quadratic programming problem:
 
-$$min (\frac{1}{2}x^TDx - d^Tx)$ subject to $A^Tx \geq b$$
+$$min (\frac{1}{2}x^TDx - d^Tx)$$
+$subject to $A^Tx \geq b$$
 
 ### Quadratic Programming Setup 
 
