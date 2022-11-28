@@ -290,5 +290,7 @@ efficient_frontier
 
 ![M_Zo](https://user-images.githubusercontent.com/114312864/204368980-6b09a558-3517-46b0-be9e-66d3e646295f.jpg)
 
-> The graph above illustrates the Efficient Frontier for the portfolio consisting of five securities, including AAPL, META, OXY, SE, and TSLA. There is no portfolio existing above the frontier, while all possible portfolios are laying on or under the line. As mentioned, the line represents the optimal portfolios, each providing the maximum expected annual return given a certain level of risk. The highest possible expected annual return is approximately 1.4, corresponding to 140% capital gain after one year. Yet, this portfolio also faces the highest level of risk, corresponding to a standard deviation of nearly 3 (300%).  It would be better to accept the overall yearly return of 0.4, or 40%, to reduce the risk with the portfolio standard deviation is less than 0.1. 
+> The graph above illustrates the Efficient Frontier for the portfolio consisting of five securities, including AAPL, META, OXY, SE, and TSLA. There is no portfolio existing above the frontier, while all possible portfolios are laying on or under the line. As mentioned, the line represents the optimal portfolios, each providing the maximum expected annual return given a certain level of risk. The highest possible expected annual return is approximately 1.4, corresponding to 140% capital gain after one year. Yet, this portfolio also faces the highest level of risk, corresponding to a standard deviation of nearly 3 (300%).  It would be better to accept the overall yearly return of 0.4, or 40%, to reduce the risk with the portfolio standard deviation is less than 30%.
+
+## Further works
 
