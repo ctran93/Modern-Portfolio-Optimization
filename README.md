@@ -57,7 +57,7 @@ stock <- c("AAPL", "META", "OXY", "SE", "TSLA")
 data <- tq_get(stock, get = "stock.prices", complete_cases = TRUE, from = "2017-01-01", to = TODAY())
 ```
 
-Yet, the previous code only gives the data for every individual stock on every trading day of a given time period. Further steps, then, need to be taken to process and transform market daily data into data that only include the annual return for every security.  
+Yet, the previous code only gives the data for every individual stock on every trading day of a given time period. Further steps, then, are needed to be taken to process and transform market daily data into data that only include the annual return for every security.  
 
 ```r
 returns_data <- data %>%
