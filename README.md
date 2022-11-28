@@ -119,17 +119,17 @@ The **covariance** is a mathematical quantity that measures the realationship be
 
 The mathematical covariance of any pair of securities is given by:
 
-$$\sigma_{ij}  = E{[(X_{i} - \mu_{i})(X_{j} - \mu_{j})]}$$
+$**$\sigma_{ij}  = E{[(X_{i} - \mu_{i})(X_{j} - \mu_{j})]}$**$
 
-$where:$
+where:
 
-$* E(x) = expected value of x$
+* E(x) = expected value of x$
 
-$* $\sigma_{ij}$ = the covariance between securities i and j,$
+* $\sigma_{ij}$ = the covariance between securities i and j,$
 
-$* $\mu_{i}$ = expected return of security i,$
+* $\mu_{i}$ = expected return of security i,$
 
-$* $\mu_{i}$ = expected return of security j.$
+* $\mu_{i}$ = expected return of security j.$
 
 
 > A high positive covariance means the two stocks tend to move in similar directions. They will increase or decrease together. On the other hand, a large negative covariance means the two stocks tend to move in opposite directions. A covariance of approximately 0 means there is no clear relationship between the two stocks; and it could be concluded that the two stocks are independent. 
@@ -159,7 +159,7 @@ TSLA  0.7179273  0.4532178 -1.2641772  4.5520224  8.9532214
 
 In the **Modern Portfolio Optimization**, the objective is the **minimum** of the portfolio variance, given by the function:
 
-$$\sigma_{p}^2 = \Sigma_{all_i}\Sigma_{all_j }x_{i}x_{j}\sigma_{ij}$$
+$**$\sigma_{p}^2 = \Sigma_{all_i}\Sigma_{all_j }x_{i}x_{j}\sigma_{ij}$**$
 
 governed by the following constraints:
 
