@@ -123,13 +123,13 @@ $**$\sigma_{ij}  = E{[(X_{i} - \mu_{i})(X_{j} - \mu_{j})]}$**$
 
 where:
 
-* E(x) = expected value of x$
+* E(x) = expected value of x,
 
-* $\sigma_{ij}$ = the covariance between securities i and j,$
+* $\sigma_{ij}$ = the covariance between securities i and j,
 
-* $\mu_{i}$ = expected return of security i,$
+* $\mu_{i}$ = expected return of security i,
 
-* $\mu_{i}$ = expected return of security j.$
+* $\mu_{i}$ = expected return of security j.
 
 
 > A high positive covariance means the two stocks tend to move in similar directions. They will increase or decrease together. On the other hand, a large negative covariance means the two stocks tend to move in opposite directions. A covariance of approximately 0 means there is no clear relationship between the two stocks; and it could be concluded that the two stocks are independent. 
