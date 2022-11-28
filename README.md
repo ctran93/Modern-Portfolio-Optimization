@@ -50,7 +50,7 @@ SNAP
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 | SNAP | 2021-03-09 | 55.41 | 57.29	| 54.51 | 56.3 | 20761000 | 56.3 |
 
-The following code is used for collecting quantitative market data for the five securities used for this portfolio optimization.
+The following code is for collecting quantitative market data for the five securities used for this portfolio optimization.
 
 ```r
 stock <- c("AAPL", "META", "OXY", "SE", "TSLA")
