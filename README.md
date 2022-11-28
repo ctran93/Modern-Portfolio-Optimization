@@ -119,7 +119,7 @@ The **covariance** is a mathematical quantity that measures the realationship be
 
 The mathematical covariance of any pair of securities is given by:
 
-$$\sigma_{ij}$ = $E{[(X_{i} - \mu_{i})(X_{j} - \mu_{j})]}$$
+$$ $\sigma_{ij}$ = $E{[(X_{i} - \mu_{i})(X_{j} - \mu_{j})]}$ $$
 where: 
 
 * E(x) = expected value of x 
