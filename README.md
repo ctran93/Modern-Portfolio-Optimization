@@ -267,7 +267,7 @@ The Efficient Frontier is limited by the minimum and maximum expected returns. W
 
 ```r
 port_return <- c()
-port_variance <-c()
+port_sd <-c()
 min_return_in_percent <- ceiling(min(stats$Expected_Annual_Return)*100)
 max_return_in_percent <- floor(max(stats$Expected_Annual_Return)*100)
 for (n in (min_return_in_percent:max_return_in_percent)){
@@ -275,19 +275,20 @@ for (n in (min_return_in_percent:max_return_in_percent)){
   new_bvec <- c(1,expected_portfolio_return,0,0,0,0,0)
   qp <- solve.QP(Dmat, dvec, Amat, new_bvec, meq = 1)
   port_return <- c(port_return, expected_portfolio_return)
-  port_variance <- c(port_variance, qp$value)
+  sdv <- sqrt(qp$value)
+  port_sd <- c(port_sd, sdv)
 }
-efficient_frontier <- plot_ly(x = port_variance, 
+efficient_frontier <- plot_ly(x = port_sd, 
                               y = port_return,
                               type = 'scatter',
                               mode = 'lines+markers')%>%
-  layout(title = "Efficient Frontier", xaxis = list(title = "Portfolio Variance (Risk)"), yaxis = list(title = "Portfolio Return"))
+  layout(title = "Efficient Frontier", xaxis = list(title = "Portfolio Standard Deviation (Risk)"), yaxis = list(title = "Portfolio Return"))
 efficient_frontier
 ```
 
 ***Output** (on 11/23/2022):*
 
-![Efficient Frontier](https://user-images.githubusercontent.com/114312864/204077982-f8e57f02-0653-44ad-8521-76dcd4c92c39.png)
+![M_Zo](https://user-images.githubusercontent.com/114312864/204368980-6b09a558-3517-46b0-be9e-66d3e646295f.jpg)
 
-> The graph above illustrates the Efficient Frontier for the portfolio consisting of five securities, including AAPL, META, OXY, SE, and TSLA. There is no portfolio existing above the frontier, while all possible portfolios are laying on or under the line. As mentioned, the line represents the optimal portfolios, each providing the maximum expected annual return given a certain level of risk. The highest possible expected annual return is approximately 1.4, corresponding to 140% capital gain after one year. Yet, this portfolio also faces the highest level of risk, corresponding to a variance of nearly 8.5.  It would be better to accept the overall yearly return of 0.4, or 40%, to reduce the risk with the portfolio variance nearly approaching zero. 
+> The graph above illustrates the Efficient Frontier for the portfolio consisting of five securities, including AAPL, META, OXY, SE, and TSLA. There is no portfolio existing above the frontier, while all possible portfolios are laying on or under the line. As mentioned, the line represents the optimal portfolios, each providing the maximum expected annual return given a certain level of risk. The highest possible expected annual return is approximately 1.4, corresponding to 140% capital gain after one year. Yet, this portfolio also faces the highest level of risk, corresponding to a standard deviation of nearly 3 (300%).  It would be better to accept the overall yearly return of 0.4, or 40%, to reduce the risk with the portfolio standard deviation is less than 0.1. 
 
