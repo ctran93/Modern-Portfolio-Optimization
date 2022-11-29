@@ -294,3 +294,7 @@ efficient_frontier
 
 ## Further works
 
+Further works are still in the process of completing. These works include:
+(1) finding the best portfolio on the Efficient Frontier by using the Sharpe ratio, 
+(2) building Optimization Program on Post-Modern Portfolio Theory, which considers the standard deviation of negative returns as the measurement of risk instead of the standard deviation of all returns, 
+(3) comparing the effectiveness of these two approaches in portfolio management. 
